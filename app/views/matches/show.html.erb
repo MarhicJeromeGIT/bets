@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Host name:</strong>
+  <%= @match.host_name %>
+</p>
+
+<p>
+  <strong>Guest name:</strong>
+  <%= @match.guest_name %>
+</p>
+
+<p>
+  <strong>Result:</strong>
+  <%= @match.result %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @match.date %>
+</p>
+
+<%= link_to 'Edit', edit_match_path(@match) %> |
+<%= link_to 'Back', matches_path %>
