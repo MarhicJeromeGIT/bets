@@ -1,10 +1,13 @@
 class BetsController < ApplicationController
+  before_action :authenticate_player!
+
+  before_action :set_player, only: [:index, :new, :create]
   before_action :set_bet, only: [:show, :edit, :update, :destroy]
 
   # GET /bets
   # GET /bets.json
   def index
-    @bets = Bet.all
+    @bets = Bet.for_player(@player)
   end
 
   # GET /bets/1
@@ -67,6 +70,10 @@ class BetsController < ApplicationController
       @bet = Bet.find(params[:id])
     end
 
+    def set_player
+      @player = Player.find(params[:player_id])
+    end
+    
     # Never trust parameters from the scary internet, only allow the white list through.
     def bet_params
       params.require(:bet).permit(:match_id, :player_id, :result)

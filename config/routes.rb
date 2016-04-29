@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  devise_for :players
   resources :countries
   resources :events
   resources :matches
-  resources :players
-  resources :bets
+  
+  resources :players do
+    resources :bets, shallow: true # index/new/create are nested
+  end
   
   root 'static_pages#home'
   

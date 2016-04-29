@@ -1,10 +1,15 @@
 class PlayersController < ApplicationController
+  before_action :authenticate_player!
   before_action :set_player, only: [:show, :edit, :update, :destroy]
 
   # GET /players
   # GET /players.json
   def index
     @players = Player.all #Player.for_event(@current_player.event)
+  end
+  
+  def bets
+    
   end
 
   # GET /players/1
@@ -25,6 +30,9 @@ class PlayersController < ApplicationController
   # POST /players.json
   def create
     @player = Player.new(player_params)
+
+    # TODO create and redirect to a page for that
+    @player.name  = "Jéjé"
 
     respond_to do |format|
       if @player.save

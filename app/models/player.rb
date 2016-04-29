@@ -1,8 +1,10 @@
 class Player < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
   has_many :bets
   belongs_to :event
-  
-  validates :name, presence: true
   
   scope :for_event, ->(event) { where(:event => event).where.not(:event => nil) }
   
