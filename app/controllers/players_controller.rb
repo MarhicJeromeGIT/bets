@@ -4,7 +4,7 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.json
   def index
-    @players = Player.for_event(@current_player.event)
+    @players = Player.all #Player.for_event(@current_player.event)
   end
 
   # GET /players/1
@@ -63,10 +63,7 @@ class PlayersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_player
-      @current_player = Player.first
-      session[:current_player] = @current_player
-      
+    def set_player    
       @player = Player.find(params[:id])
     end
 
