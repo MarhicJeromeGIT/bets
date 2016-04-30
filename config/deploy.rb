@@ -8,7 +8,7 @@ set :repo_url, 'git@github.com:MarhicJeromeGIT/bets.git'
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-# set :deploy_to, '/var/www/my_app_name'
+set :deploy_to, '/var/www/bets'
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -26,8 +26,10 @@ set :repo_url, 'git@github.com:MarhicJeromeGIT/bets.git'
 # Default value for :linked_files is []
 set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
 
-set :rvm1_ruby_version, '2.3.0'
-set :rvm1_alias_name, '2.3.0@bets'
+#set :rvm1_ruby_version, '2.3.0'
+#set :rvm1_alias_name, '2.3.0@bets'
+set :rvm_ruby_version, '2.3.0@bets'
+
 
 # Default value for linked_dirs is []
 # set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system')
@@ -37,6 +39,9 @@ set :rvm1_alias_name, '2.3.0@bets'
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
+#set :unicorn_binary, "/usr/bin/unicorn"
+#set :unicorn_config, "#{current_path}/config/unicorn.rb"
+#set :unicorn_pid, "#{current_path}/tmp/pids/unicorn.pid"
 
 namespace :deploy do
 
@@ -48,8 +53,12 @@ namespace :deploy do
       # end
     end
   end
+  
+  
+ # before 'deploy', 'rvm1:install:rvm'  # install/update RVM
+ # before 'deploy', 'rvm1:install:ruby'  # install/update Ruby
+ # before 'deploy', 'rvm1:alias:create'
+ # before 'deploy', 'rvm1:install:gems'  # install/update gems from Gemfile into gemset
 
-  before 'deploy', 'rvm1:install:rvm'  # install/update RVM
-  before 'deploy', 'rvm1:alias:create'
-  before 'deploy', 'rvm1:install:gems'  # install/update gems from Gemfile into gemset
+ #after 'deploy', 'start_unicorn'
 end
