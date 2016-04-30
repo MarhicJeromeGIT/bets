@@ -10,5 +10,23 @@
   <%= @event.start_date %>
 </p>
 
+Participants (<%= @players.count %>)
+<table>
+  <thead>
+  	<td>Classement</td>
+	<td>Nom</td>
+	<td>Points</td>
+  </thead>
+  <tbody>
+    <% @players.each_with_index do |p,i| %>
+	  <tr>
+	  	<td><%= i+1 %></td>
+		<td><%= p.name %> (<%= link_to( 'voir pronostics', p ) %>)</td>
+		<td><%= p.points %></td>	
+	  </tr>
+	<% end %>
+	</tbody>
+</table>
+
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

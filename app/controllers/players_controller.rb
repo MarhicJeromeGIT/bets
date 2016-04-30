@@ -7,10 +7,6 @@ class PlayersController < ApplicationController
   def index
     @players = Player.all #Player.for_event(@current_player.event)
   end
-  
-  def bets
-    
-  end
 
   # GET /players/1
   # GET /players/1.json
@@ -24,6 +20,7 @@ class PlayersController < ApplicationController
 
   # GET /players/1/edit
   def edit
+    #Make sure only the logged-in user can edit himself.
   end
 
   # POST /players
@@ -33,6 +30,7 @@ class PlayersController < ApplicationController
 
     # TODO create and redirect to a page for that
     @player.name  = "Jéjé"
+    
 
     respond_to do |format|
       if @player.save
@@ -77,6 +75,9 @@ class PlayersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_params
-      params.require(:player).permit(:name, :points)
+      params.require(:player).permit(
+        :name,
+        :points,
+        :bets_attributes => [:result, :id])
     end
 end

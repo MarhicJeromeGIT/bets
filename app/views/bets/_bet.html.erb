@@ -1,0 +1,21 @@
+<p>
+  <strong>Match:</strong>
+  <%= bet.match_id %>
+</p>
+
+<p>
+  <strong>Player:</strong>
+  <%= bet.player_id %>
+</p>
+
+<p>
+  <strong>Result:</strong>
+  <% case bet.result %>
+  <% when Match::TIE %>
+    <%= "Match nul" %>
+  <% when Match::LOSE %>
+    <%= "Victoire de #{bet.match.guest_name}"%>
+  <% when Match::WIN %>
+    <%= "Victoire de #{bet.match.host_name}"%>
+  <% end%>
+</p>

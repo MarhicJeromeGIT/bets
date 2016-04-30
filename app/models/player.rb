@@ -6,6 +6,10 @@ class Player < ActiveRecord::Base
   has_many :bets
   belongs_to :event
   
+  before_create :create_default_bets
+  
+  accepts_nested_attributes_for :bets
+  
   scope :for_event, ->(event) { where(:event => event).where.not(:event => nil) }
   
   def count_points
@@ -15,4 +19,20 @@ class Player < ActiveRecord::Base
     end
     return score
   end
+  
+  def create_default_bets
+    Match.all.each do |m|
+      self.bets.build(match: m, result: Match::TIE)
+    end
+  end
 end
+
+
+
+
+
+
+
+
+
+

@@ -7,8 +7,15 @@
 
 <p>
   <strong>Points:</strong>
-  <%= @player.points %>
+  <%= @player.count_points %>
 </p>
 
+<ul>
+	<li>
+	  <%@player.bets.each do |b| %>
+	    <%= render b %>
+	  <% end %>
+	</li>
+</ul>
 <%= link_to 'Edit', edit_player_path(@player) %> |
 <%= link_to 'Back', players_path %>

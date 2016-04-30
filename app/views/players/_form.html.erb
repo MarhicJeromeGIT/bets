@@ -19,6 +19,22 @@
     <%= f.label :points %><br>
     <%= f.number_field :points %>
   </div>
+  <ul>
+  	<% @player.bets.each do |bet| %>
+      <%= f.fields_for :bets, bet do |b| %>
+	    <li>
+	      <%= b.object.match.host_name + " VS " + b.object.match.guest_name %>
+	      <%= b.radio_button(:result, Match::WIN) %>
+	      <%= b.label("result_g", Match::WIN) %>
+	      <%= b.radio_button(:result, Match::TIE) %>
+		  <%= b.label("result_n", Match::TIE) %>
+	      <%= b.radio_button(:result, Match::LOSE) %>
+		  <%= b.label("result_p", Match::LOSE) %>
+	    </li>
+	  <% end %>
+  <% end %>
+  </ul>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

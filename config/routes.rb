@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   devise_for :players
   resources :countries
-  resources :events
+  
+  resources :events do
+    member do
+      post 'join'
+      post 'leave' 
+    end
+  end
   resources :matches
   
   resources :players do

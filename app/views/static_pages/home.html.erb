@@ -1,1 +1,12 @@
 <h1>Bienvenue</h1>
+
+<% if player_signed_in? %>
+  <p> <%= current_player.name %></p>
+  <%= link_to "Profil", current_player %>
+  <%= link_to "Editer pronostics", edit_player_path(current_player) %>
+  <%= link_to "Voir les groupes", events_path %>
+  <%= link_to "Se déconnecter", destroy_player_session_path, method: :delete %>
+<% else %>
+  <%= link_to "S'identifier", new_player_session_path %>
+  <%= link_to "S'inscrire", new_player_registration_path %>
+<% end %>

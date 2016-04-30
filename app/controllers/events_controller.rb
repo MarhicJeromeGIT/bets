@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :authenticate_player!
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:join,:leave,:show, :edit, :update, :destroy]
 
   # GET /events
   # GET /events.json
@@ -11,8 +11,29 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @players = Player.for_event(@event).order('points DESC')
   end
 
+  # A player join this group
+  def join
+    current_player.event = @event
+    current_player.save
+    flash[:success] = "Vous avez rejoint ce groupe !"
+    redirect_to @event
+  end
+  
+  def leave
+    debugger
+    if current_player.event == @event
+      current_player.event = nil
+      current_player.save
+      flash[:success] = "Vous avez quitté ce groupe !"
+      redirect_to @event
+    else
+      flash[:error] = "Vous n'êtes pas membre de ce groupe."
+      redirect_to 'index'
+    end
+  end
   # GET /events/new
   def new
     @event = Event.new
