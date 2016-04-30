@@ -26,6 +26,9 @@ set :repo_url, 'git@github.com:MarhicJeromeGIT/bets.git'
 # Default value for :linked_files is []
 set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
 
+set :rvm1_ruby_version, '2.3.0'
+set :rvm1_alias_name, '2.3.0@bets'
+
 # Default value for linked_dirs is []
 # set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system')
 
@@ -46,4 +49,7 @@ namespace :deploy do
     end
   end
 
+  before 'deploy', 'rvm1:install:rvm'  # install/update RVM
+  before 'deploy', 'rvm1:alias:create'
+  before 'deploy', 'rvm1:install:gems'  # install/update gems from Gemfile into gemset
 end
