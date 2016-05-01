@@ -6,7 +6,11 @@ class Player < ActiveRecord::Base
   has_many :bets
   belongs_to :event
   
+  validates :name, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
+  
   before_create :create_default_bets
+  before_create :set_default_points
   
   accepts_nested_attributes_for :bets
   
@@ -20,11 +24,16 @@ class Player < ActiveRecord::Base
     return score
   end
   
-  def create_default_bets
-    Match.all.each do |m|
-      self.bets.build(match: m, result: Match::TIE)
+  private
+    def create_default_bets
+      Match.all.each do |m|
+        self.bets.build(match: m, result: Match::TIE)
+      end
     end
-  end
+    
+    def set_default_points
+      self.points = 0
+    end
 end
 
 

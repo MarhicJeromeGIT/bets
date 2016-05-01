@@ -50,8 +50,8 @@ group :development do
   gem 'capistrano',   require: false
   #gem 'capistrano-unicorn-nginx', '~> 3.2.0'
   gem 'capistrano-rails',   require: false
-      gem 'capistrano-rvm',     require: false
-    gem 'capistrano-bundler', require: false
+  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-bundler', require: false
   #gem 'rvm1-capistrano3', require: false
 end
 
