@@ -4,34 +4,35 @@ class EventsController < ApplicationController
 
   # GET /events
   # GET /events.json
-  def index
-    @events = Event.all
+  def index    
+    set_index_variables
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
-    @players = Player.for_event(@event).order('points DESC')
+    @players = Player.subscribed_to(@event).order('points DESC')
   end
 
   # A player join this group
   def join
-    current_player.event = @event
-    current_player.save
+    current_player.events << @event
     flash[:success] = "Vous avez rejoint ce groupe !"
     redirect_to @event
   end
   
   def leave
-    debugger
-    if current_player.event == @event
-      current_player.event = nil
-      current_player.save
-      flash[:success] = "Vous avez quitté ce groupe !"
-      redirect_to @event
+    set_index_variables
+    if @event.is_owner?(current_player)
+      flash[:notice] = "Vous ne pouvez pas quitter un groupe que vous avez créé!"
+      redirect_to action: "index"
+    elsif current_player.events.include? @event
+      current_player.events.delete(@event)
+      flash[:notice] = "Vous avez quitté ce groupe !"
+      redirect_to action: "index"
     else
       flash[:error] = "Vous n'êtes pas membre de ce groupe."
-      redirect_to 'index'
+      redirect_to action: "index"
     end
   end
   # GET /events/new
@@ -46,6 +47,7 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
+    debugger
     @event = Event.new(event_params)
 
     respond_to do |format|
@@ -91,6 +93,13 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:name, :start_date)
+      params.require(:event).permit(:name, :start_date, :owner_player_id)
     end
+    
+    def set_index_variables
+      @subscribed_events     = Event.is_member(current_player)
+      @not_subscribed_events = Event.is_not_member(current_player)
+      @owner_events          = Event.is_owner(current_player)
+    end
+  
 end

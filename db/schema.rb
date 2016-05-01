@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160429215035) do
+ActiveRecord::Schema.define(version: 20160501181412) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "bets", force: :cascade do |t|
     t.integer  "match_id"
@@ -31,9 +34,18 @@ ActiveRecord::Schema.define(version: 20160429215035) do
   create_table "events", force: :cascade do |t|
     t.string   "name"
     t.datetime "start_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "owner_player_id"
   end
+
+  create_table "events_players", id: false, force: :cascade do |t|
+    t.integer "event_id"
+    t.integer "player_id"
+  end
+
+  add_index "events_players", ["event_id"], name: "index_events_players_on_event_id", using: :btree
+  add_index "events_players", ["player_id"], name: "index_events_players_on_player_id", using: :btree
 
   create_table "matches", force: :cascade do |t|
     t.string   "host_name"
@@ -49,7 +61,6 @@ ActiveRecord::Schema.define(version: 20160429215035) do
     t.integer  "points"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.integer  "event_id"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -62,7 +73,7 @@ ActiveRecord::Schema.define(version: 20160429215035) do
     t.string   "last_sign_in_ip"
   end
 
-  add_index "players", ["email"], name: "index_players_on_email", unique: true
-  add_index "players", ["reset_password_token"], name: "index_players_on_reset_password_token", unique: true
+  add_index "players", ["email"], name: "index_players_on_email", unique: true, using: :btree
+  add_index "players", ["reset_password_token"], name: "index_players_on_reset_password_token", unique: true, using: :btree
 
 end

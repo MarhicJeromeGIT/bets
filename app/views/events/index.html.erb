@@ -1,31 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Events</h1>
+<h2>Vos groupes</h2>
 
 <table>
   <thead>
     <tr>
       <th>Name</th>
-      <th>Start date</th>
-      <th>Action</th>
-      <th colspan="3"></th>
+      <th>Date de début</th>
+      <th>Actions</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @events.each do |event| %>
+    <% @subscribed_events.each do |event| %>
       <tr>
-        <td><%= event.name %></td>
+        <td><%= link_to "#{event.name} (#{event.player_count})", event %></td>
         <td><%= event.start_date %></td>
-        <td><% if event != current_player.event %>
-        		<%= link_to "Rejoindre le groupe", join_event_path(event), method: :post %>
-        	<% else %>
-        		<%= link_to "Quitter le groupe", leave_event_path(event), method: :post %>
-        	<% end %>
-       	</td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to "Quitter le groupe", leave_event_path(event), method: :post %></td>
       </tr>
     <% end %>
   </tbody>
@@ -33,4 +24,50 @@
 
 <br>
 
-<%= link_to 'New Event', new_event_path %>
+<h2>Rejoignez d'autres groupes</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Start date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @not_subscribed_events.each do |event| %>
+      <tr>
+        <td><%= link_to "#{event.name} (#{event.player_count})", event %></td>
+        <td><%= event.start_date %></td>
+        <td><%= link_to "Rejoindre le groupe", join_event_path(event), method: :post %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Les groupes que vous avez créés</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Start date</th>
+      <th colspan=2>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @owner_events.each do |event| %>
+      <tr>
+        <td><%= link_to "#{event.name} (#{event.player_count})", event %></td>
+        <td><%= event.start_date %></td>
+        <td><%= link_to 'Edit', edit_event_path(event) %></td>
+        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td colspan="4"><%= link_to 'Créer un nouveau groupe', new_event_path %>
+    </tr>	
+  </tbody>
+</table>

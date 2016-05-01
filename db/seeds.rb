@@ -5,9 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Event.create!(
-{name: 'Euro 2016 LeClan', start_date: '' }
-)
+player = Player.create(name: "Jerome", email: "jerome@gmail.com", password:"azerty", password_confirmation:"azerty")
+yuriko = Player.create(name: "Yuriko", email: "yuriko@gmail.com", password:"azerty", password_confirmation:"azerty")
+
+Event.create!( name: 'Euro 2016 LeClan', start_date: '', owner_player: player )
+Event.create!( name: 'YURIKO EVENT', start_date: '', owner_player: yuriko )
 
 Country.create!([
 {name: 'France', poule: 'A'}, {name: 'Roumanie', poule: 'A'}, 

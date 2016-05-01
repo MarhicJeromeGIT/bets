@@ -1,10 +1,11 @@
 class Player < ActiveRecord::Base
+  has_many :bets
+  has_and_belongs_to_many :events
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :bets
-  belongs_to :event
   
   validates :name, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
@@ -14,7 +15,10 @@ class Player < ActiveRecord::Base
   
   accepts_nested_attributes_for :bets
   
-  scope :for_event, ->(event) { where(:event => event).where.not(:event => nil) }
+  # Strange my .joins(:events_players) doesn't seem to work here.
+  sql = "SELECT \"players\".* FROM \"players\" INNER JOIN \"events_players\" ON \"events_players\".\"player_id\" = \"players\".\"id\""
+  scope :joins_events_players, -> { all }
+  scope :subscribed_to, ->(event){ joins(:events).where("events_players.event_id = ?",event.id)}  
   
   def count_points
     score = 0
