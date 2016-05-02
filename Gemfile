@@ -58,3 +58,5 @@ group :development do
   #gem 'rvm1-capistrano3', require: false
 end
 
+# Bootstrap
+gem "twitter-bootstrap-rails"
