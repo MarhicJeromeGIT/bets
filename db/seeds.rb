@@ -5,12 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-player = Player.create(name: "Jerome", email: "jerome@gmail.com", password:"azerty", password_confirmation:"azerty")
-yuriko = Player.create(name: "Yuriko", email: "yuriko@gmail.com", password:"azerty", password_confirmation:"azerty")
-
-Event.create!( name: 'Euro 2016 LeClan', start_date: '', owner_player: player )
-Event.create!( name: 'YURIKO EVENT', start_date: '', owner_player: yuriko )
-
 Country.create!([
 {name: 'France', poule: 'A'}, {name: 'Roumanie', poule: 'A'}, 
 {name: 'Albanie', poule: 'A'}, {name: 'Suisse', poule: 'A'}, 
@@ -26,11 +20,11 @@ Country.create!([
 {name: 'Portugal', poule: 'F'}, {name: 'Islande', poule: 'F'}])
 
 Match.create!([
-{ host_name: 'France', guest_name: 'Roumanie', date: '', result: '' },
-{ host_name: 'Albanie', guest_name: 'Suisse', date: '', result: '' },
-{ host_name: 'Pays de Galles', guest_name: 'Slovaquie', date: '', result: '' },
-{ host_name: 'Angleterre', guest_name: 'Russie', date: '', result: '' },
-{ host_name: 'Turquie', guest_name: 'Croatie', date: '', result: '' },
+{ host_name: 'France', guest_name: 'Roumanie', date: '2016-06-10 21:00:00 +0200', result: '' },
+{ host_name: 'Albanie', guest_name: 'Suisse', date: '2016-06-11 15:00:00 +0200', result: '' },
+{ host_name: 'Pays de Galles', guest_name: 'Slovaquie', date: '2016-06-11 18:00:00 +0200', result: '' },
+{ host_name: 'Angleterre', guest_name: 'Russie', date: '2016-06-11 21:00:00 +0200', result: '' },
+{ host_name: 'Turquie', guest_name: 'Croatie', date: '2016-06-12 15:00:00 +0200', result: '' },
 { host_name: 'Pologne', guest_name: 'Roumanie', date: '', result: '' },
 { host_name: 'France', guest_name: 'Irlande du Nord', date: '', result: '' },
 { host_name: 'Allemagne', guest_name: 'Ukraine', date: '', result: '' },
@@ -65,6 +59,11 @@ Match.create!([
 { host_name: 'Suède', guest_name: 'Belgique', date: '', result: ''}
 ])
 
+player = Player.create(name: "Jerome", email: "jerome@gmail.com", password:"azerty", password_confirmation:"azerty")
+yuriko = Player.create(name: "Yuriko", email: "yuriko@gmail.com", password:"azerty", password_confirmation:"azerty")
+
+Event.create!( name: 'Euro 2016 LeClan', start_date: '', owner_player: player )
+Event.create!( name: 'YURIKO EVENT', start_date: '', owner_player: yuriko )
 
 
 

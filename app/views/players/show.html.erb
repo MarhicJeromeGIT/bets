@@ -12,7 +12,8 @@
 
 <ul>
 	<li>
-	  <%@player.bets.each do |b| %>
+	  <%@bets.each_with_index do |b,i| %>
+	    <%= i %>
 	    <%= render b %>
 	  <% end %>
 	</li>

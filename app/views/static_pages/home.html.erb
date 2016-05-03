@@ -5,6 +5,7 @@
   <%= link_to "Profil", current_player %>
   <%= link_to "Editer pronostics", edit_player_path(current_player) %>
   <%= link_to "Voir les groupes", events_path %>
+  <%= link_to "Voir les matchs", matches_path %>
   <%= link_to "Se déconnecter", destroy_player_session_path, method: :delete %>
 <% else %>
   <%= link_to "S'identifier", new_player_session_path %>

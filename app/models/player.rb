@@ -10,8 +10,7 @@ class Player < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
   
-  before_create :create_default_bets
-  before_create :set_default_points
+  before_create :setup_player
   
   accepts_nested_attributes_for :bets
   
@@ -29,14 +28,12 @@ class Player < ActiveRecord::Base
   end
   
   private
-    def create_default_bets
+    # Add the bets and setup the points
+    def setup_player
+      self.points = 0
       Match.all.each do |m|
         self.bets.build(match: m, result: Match::TIE)
       end
-    end
-    
-    def set_default_points
-      self.points = 0
     end
 end
 

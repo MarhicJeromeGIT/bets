@@ -13,4 +13,9 @@ class Bet < ActiveRecord::Base
   def won
     return self.match.result == self.result
   end
+  
+  # return true if the match hasn't been played yet
+  def pending
+    return match.result.blank?
+  end
 end
