@@ -8,7 +8,11 @@ Rails.application.routes.draw do
       post 'join'
       post 'leave' 
     end
+    collection do
+      get 'subscribed'
+    end
   end
+  
   resources :matches
   
   resources :players do

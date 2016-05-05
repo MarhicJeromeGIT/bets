@@ -4,11 +4,16 @@ class Event < ActiveRecord::Base
   
   validates :name, presence: true
   validates :owner_player, presence: true
+  validates :start_date, presence: true
   after_create :add_owner_player_to_players
   
   scope :is_not_member, ->(player){ where('id NOT IN (?)', Event.is_member(player).pluck(:id)) }
   scope :is_member, ->(player){ joins(:events_players).where("events_players.player_id = ?",player.id)}
   scope :is_owner, ->(player){ where("owner_player_id = ?",player.id)} # the user created this groupe
+  
+  STATUS_REGISTERING = "Inscriptions"
+  STATUS_STARTED= "Commencé"
+  STATUS_FINISHED= "Terminé"
   
   def player_count
     Player.subscribed_to(self).count
@@ -16,6 +21,15 @@ class Event < ActiveRecord::Base
   
   def is_owner?(player)
     return owner_player == player
+  end
+  
+  def status
+   STATUS_REGISTERING
+   # if Time.now < self.start_date
+   #   STATUS_REGISTERING
+   # else
+   #    STATUS_STARTED
+   # end
   end
   
   private

@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<div>
+  <%= link_to 'Créer un nouveau groupe', new_event_path, class: "btn btn-primary" %>
+</div>
+
+<h2>Les groupes dont vous faites partie</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nom du groupe</th>
+      <th>Statut</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @subscribed_events.each do |event| %>
+      <tr>
+        <td><%= link_to "#{event.name} (#{event.player_count})", event %></td>
+        <td><%= event.status %></td>
+        <td><%= link_to "Quitter le groupe", leave_event_path(event), method: :post, class: "btn btn-default" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

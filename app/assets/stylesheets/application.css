@@ -20,6 +20,10 @@
     background-repeat:no-repeat;
 }
 
+h1{
+	padding-top: 0px !important;
+}
+
 h1 {
     text-align: center;
     padding-top: 100px;

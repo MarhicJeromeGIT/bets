@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Bienvenue sur Bets!<small><%= current_player.name if player_signed_in? %></small></h1>
+  <h1>Bienvenue sur Bets!</h1>
 </div>
 <% if player_signed_in? %>
 <div class="row">
@@ -10,9 +10,7 @@
   <%= render partial: 'shared/thumbnail', 
   		locals: {the_link: matches_path, name:"Voir les matchs", icon: "fa fa-trophy", color: "gold"}%>
 </div>
-  
-  <%= link_to "Se déconnecter", destroy_player_session_path, method: :delete %>
-<% else %>
+  <% else %>
   <p>Inscrivez-vous ou identifiez-vous pour accéder à vos pronos.</p>
   <%= link_to "S'identifier", new_player_session_path,  class: "btn btn-primary btn-lg" %>
   <%= link_to "S'inscrire", new_player_registration_path, class: "btn btn-primary btn-lg" %>

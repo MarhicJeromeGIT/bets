@@ -7,6 +7,10 @@ class EventsController < ApplicationController
   def index    
     set_index_variables
   end
+  
+  def subscribed
+    set_index_variables
+  end
 
   # GET /events/1
   # GET /events/1.json
