@@ -1,13 +1,19 @@
-<h1>Bienvenue</h1>
-
+<div class="page-header">
+  <h1>Bienvenue sur Bets!<small><%= current_player.name if player_signed_in? %></small></h1>
+</div>
 <% if player_signed_in? %>
-  <p> <%= current_player.name %></p>
-  <%= link_to "Profil", current_player %>
-  <%= link_to "Editer pronostics", edit_player_path(current_player) %>
-  <%= link_to "Voir les groupes", events_path %>
-  <%= link_to "Voir les matchs", matches_path %>
+<div class="row">
+  <%= render partial: 'shared/thumbnail', 
+  		locals: {the_link: edit_player_path(current_player), name:"Editer pronostics", icon: "fa-futbol-o", color: "red"}%>
+  <%= render partial: 'shared/thumbnail', 
+  		locals: {the_link: events_path, name:"Voir les groupes", icon: "fa-users", color: "blue"}%>
+  <%= render partial: 'shared/thumbnail', 
+  		locals: {the_link: matches_path, name:"Voir les matchs", icon: "fa fa-trophy", color: "gold"}%>
+</div>
+  
   <%= link_to "Se déconnecter", destroy_player_session_path, method: :delete %>
 <% else %>
-  <%= link_to "S'identifier", new_player_session_path %>
-  <%= link_to "S'inscrire", new_player_registration_path %>
+  <p>Inscrivez-vous ou identifiez-vous pour accéder à vos pronos.</p>
+  <%= link_to "S'identifier", new_player_session_path,  class: "btn btn-primary btn-lg" %>
+  <%= link_to "S'inscrire", new_player_registration_path, class: "btn btn-primary btn-lg" %>
 <% end %>

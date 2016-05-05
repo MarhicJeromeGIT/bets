@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+
+.masthead{
+    height:200px;
+    background-image:url("/soccer-ball-on-the-goal-sport-web-header.jpg");
+    background-repeat:no-repeat;
+}
+
+h1 {
+    text-align: center;
+    padding-top: 100px; # center vertically
+}
+
+a:hover{
+  color: darkblue;
+}

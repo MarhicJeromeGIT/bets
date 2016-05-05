@@ -54,11 +54,18 @@ namespace :deploy do
     end
   end
   
+  # Restart Unicorn
+  task  :restart_unicorn do
+    on roles(:app) do
+      execute "sudo service unicorn_bets stop"
+      execute "sudo service unicorn_bets start"
+    end
+  end
   
  # before 'deploy', 'rvm1:install:rvm'  # install/update RVM
  # before 'deploy', 'rvm1:install:ruby'  # install/update Ruby
  # before 'deploy', 'rvm1:alias:create'
  # before 'deploy', 'rvm1:install:gems'  # install/update gems from Gemfile into gemset
 
- #after 'deploy', 'start_unicorn'
+  after 'deploy', 'restart_unicorn'
 end

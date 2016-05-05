@@ -1,0 +1,8 @@
+<div  class="col-sm-6 col-md-4"> 
+  <%= link_to the_link do %>
+    <div class="thumbnail pager">
+      <%= content_tag(:i, "", class:"fa #{icon} fa-5x", style:"color:#{color}") %>
+      <%= content_tag(:p, name) %>
+    </div>
+  <% end %>
+</div>
