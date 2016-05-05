@@ -60,3 +60,6 @@ end
 
 # Bootstrap
 gem "twitter-bootstrap-rails"
+
+# datatables
+gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
