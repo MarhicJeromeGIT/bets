@@ -10,7 +10,9 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require jquery-ui
  *= require jquery.dataTables.min
+ *= require bootstrap
  *= require_tree .
  *= require_self
  */
@@ -19,6 +21,7 @@
     height:200px;
     background-image:url("/soccer-ball-on-the-goal-sport-web-header.jpg");
     background-repeat:no-repeat;
+    background-size: 100%;
 }
 
 h1{
