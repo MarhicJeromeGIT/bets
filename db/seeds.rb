@@ -6,8 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Country.create!([
-{name: 'France', poule: 'A'}, {name: 'Roumanie', poule: 'A'}, 
-{name: 'Albanie', poule: 'A'}, {name: 'Suisse', poule: 'A'}, 
+{name: 'France', poule: 'A', iso: 'fr'}, {name: 'Roumanie', poule: 'A', iso: 'ro'}, 
+{name: 'Albanie', poule: 'A',}, {name: 'Suisse', poule: 'A'}, 
 {name: 'Pays de Galles', poule:  'B'}, {name: 'Slovaquie', poule: 'B'}, 
 {name: 'Angleterre', poule: 'B'}, {name: 'Russie', poule: 'B' },
 {name: 'Turquie', poule: 'D'}, {name: 'Croatie', poule: 'D'},

@@ -66,3 +66,6 @@ end
 
 # datatables
 gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
+
+#flags
+gem 'svg-flags-rails', '>= 1.0.0-beta' # ISO country flags https://github.com/steakknife/svg-flags/rails

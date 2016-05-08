@@ -11,3 +11,4 @@ Rails.application.config.assets.paths << Rails.root.join("vendor", "assets", "fo
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( favicon.ico )
+Rails.application.config.assets.precompile += %w( country-4x3/* )

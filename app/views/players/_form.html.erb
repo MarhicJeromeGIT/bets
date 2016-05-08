@@ -10,33 +10,30 @@
       </ul>
     </div>
   <% end %>
-<p>Date: <input type="text" id="datepicker"></p>
-<fieldset class="filter_form_fieldset venues">
-    <legend class="filter_form_fieldset_legend">Choose a venue type:</legend>
-    <input type="checkbox" name="venuetypes[]" id="venue-1" />
-    <label for="venue-1">Venue 1</label>
-    <input type="checkbox" name="venuetypes[]" id="venue-2" />
-    <label for="venue-2">Venue 2</label>
-    <input type="checkbox" name="venuetypes[]" id="venue-3" />
-    <label for="venue-3">Venue 3</label>
-</fieldset>
-  <ul>
   	<% @player.bets.each do |bet| %>
       <%= f.fields_for :bets, bet do |b| %>
-	    <li>
-	      <%= b.object.match.host_name + " VS " + b.object.match.guest_name %>
+	    <div class="col-md-12">
+	      <div class="col-md-3">
+	      <% match = b.object.match %>
+	      <% iso = Country.find_by_name(match.host_name).try(:iso) || 'hk' %>
+		  <%= image_tag "country-4x3/#{iso}.svg", width: 64, alt: 'HK' %>
+		  vs
+		  <% iso = Country.find_by_name(match.guest_name).try(:iso) || 'hk' %>
+		  <%= image_tag "country-4x3/#{iso}.svg", width: 64, alt: 'HK' %>
+		  </div>
+		  <div class="col-md-9" style="padding-top: 0px;" >
 	      <div class="buttonset">
 	      <%= b.radio_button(:result, Match::WIN) %>
-	      <%= b.label("result_g", "victoire de #{b.object.match.host_name}") %>
+	      <%= b.label("result_g", "victoire de #{b.object.match.host_name}",class:"col-md-4",style:"height:50px;","data-toggle":"tooltip", "title":"88% des choix") %>
 	      <%= b.radio_button(:result, Match::TIE) %>
-		  <%= b.label("result_n", "Match nul") %>
+		  <%= b.label("result_n", "Match nul",class:"col-md-4",style:"height:50px;","data-toggle":"tooltip", "title":"88% des choix") %>
 	      <%= b.radio_button(:result, Match::LOSE) %>
-		  <%= b.label("result_p", "victoire de #{b.object.match.guest_name}") %>
+		  <%= b.label("result_p", "victoire de #{b.object.match.guest_name}",class:"col-md-4",style:"height:50px;","data-toggle":"tooltip", "title":"88% des choix") %>
 		  </div>
-	    </li>
+		  </div>
+	    </div>
 	  <% end %>
-  <% end %>
-  </ul>
+  <% end %>  
   
   <div class="actions">
     <%= f.submit %>

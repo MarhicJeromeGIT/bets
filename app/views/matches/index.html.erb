@@ -8,7 +8,7 @@
   <% @match_this_day = @matches.where("date(date) = ?", m.date) %>
   <% @match_this_day.each do |match| %>
   	<div>
-  		<%= match.host_name %> vs <%= match.guest_name %> <%= match.date.try(:strftime,"%Hh%M")%>
+		<%= render match %>
   	</div>
   <% end %>
 <% end %>

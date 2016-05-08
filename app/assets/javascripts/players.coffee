@@ -4,5 +4,4 @@
 
 $ ->
   console.log("player")
-  $( "#datepicker" ).datepicker();
-  $(".buttonset").buttonset()
+  $('[data-toggle="tooltip"]').tooltip(container: 'body')
