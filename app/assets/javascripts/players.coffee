@@ -4,6 +4,5 @@
 
 $ ->
   console.log("player")
-  $(".buttonset").buttonset()
   $( "#datepicker" ).datepicker();
-  
+  $(".buttonset").buttonset()

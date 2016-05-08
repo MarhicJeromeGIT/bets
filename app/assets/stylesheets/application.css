@@ -12,7 +12,8 @@
  *
  *= require jquery-ui
  *= require jquery.dataTables.min
- *= require bootstrap
+ *= require bootstrap.min
+ *= require font-awesome
  *= require_tree .
  *= require_self
  */
