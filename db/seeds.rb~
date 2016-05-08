@@ -54,7 +54,7 @@ Match.create!([
 { host_name: 'Croatie', guest_name: 'Espagne', date: '2016-06-21 21:00:00 +0200', result: '' },
 { host_name: 'Islande', guest_name: 'Autriche', date: '2016-06-22 18:00:00 +0200', result: '' },
 { host_name: 'Hongrie', guest_name: 'Portugal', date: '2016-06-22 18:00:00 +0200', result: '' },
-{ host_name: 'Italie', guest_name: 'République d\'Irlande', date: '2016-06-22 21:00:00 +0200', result: '' },
+{ host_name: 'Italie', guest_name: 'République d\'Irlande', date: '', result: '' },
 { host_name: 'Suède', guest_name: 'Belgique', date: '2016-06-22 21:00:00 +0200', result: ''}
 ])
 
