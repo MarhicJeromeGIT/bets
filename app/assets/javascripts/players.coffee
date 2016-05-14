@@ -4,4 +4,5 @@
 
 $ ->
   console.log("player")
+  $(".buttonset").buttonset();
   $('[data-toggle="tooltip"]').tooltip(container: 'body')

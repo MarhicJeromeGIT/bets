@@ -17,10 +17,6 @@
 //= require modal
 //  require bootstrap.min
 //= require jquery.dataTables.min
-//= require turbolinks
+// require turbolinks
 //= require_tree .
 
-$(document).on('ready page:load', function() {
-    console.log( "ready!" );
-    $(".buttonset").buttonset();
-});  
