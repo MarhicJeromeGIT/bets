@@ -5,7 +5,7 @@
   <p><%= m.date.try(:strftime, "%d %B %Y") %></p>
   <% @match_this_day = @matches.where("date(date) = ?", m.date) %>
   <% @match_this_day.each do |match| %>
-  	<div>
+  	<div class="margin-bottom-10">
 		<%= render match %>
   	</div>
   <% end %>

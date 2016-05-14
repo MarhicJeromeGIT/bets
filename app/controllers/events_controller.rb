@@ -20,6 +20,15 @@ class EventsController < ApplicationController
 
   # A player join this group
   def join
+    if @event.password.present? 
+       # make sure the provided password matches:
+       unless event_params && event_params[:password] == @event.password
+         flash[:notice] = "Mot de passe incorrect !"
+         redirect_to action: 'index'
+         return
+       end
+    end
+    
     current_player.events << @event
     flash[:success] = "Vous avez rejoint ce groupe !"
     redirect_to @event
@@ -96,7 +105,7 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:name, :start_date, :owner_player_id)
+      params.require(:event).permit(:password, :name, :start_date, :owner_player_id)
     end
     
     def set_index_variables

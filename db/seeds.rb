@@ -11,10 +11,10 @@ Country.create!([
 {name: 'Pays de Galles', poule:  'B', iso: 'wales'}, {name: 'Slovaquie', poule: 'B', iso: 'sk'}, 
 {name: 'Angleterre', poule: 'B', iso: 'england'}, {name: 'Russie', poule: 'B', iso: 'ru' },
 {name: 'Turquie', poule: 'D', iso: 'tk'}, {name: 'Croatie', poule: 'D', iso: 'hr'},
-{name: 'Pologne', poule: 'C', iso: 'pl'}, {name: 'Irlande du Nord', poule: 'C' },
+{name: 'Pologne', poule: 'C', iso: 'pl'}, {name: 'Irlande du Nord', poule: 'C', iso: 'gb' },
 {name: 'Allemagne', poule: 'C', iso: 'de'}, {name: 'Ukraine', poule: 'C', iso: 'ua'},
 {name: 'Espagne', poule: 'D', iso: 'es'}, {name: 'Rép. Tchèque', poule: 'D', iso: 'cz'},
-{name: 'République d\'Irlande', poule: 'E'}, {name: 'Suède', poule: 'E'},
+{name: 'République d\'Irlande', poule: 'E',  iso: 'ie'}, {name: 'Suède', poule: 'E',  iso: 'se'},
 {name: 'Belgique', poule: 'E', iso: 'be'}, {name: 'Italie', poule: 'E', iso: 'it'},
 {name: 'Autriche', poule: 'F',iso: 'at' }, {name: 'Hongrie', poule: 'F', iso: 'hu'},
 {name: 'Portugal', poule: 'F', iso: 'pt'}, {name: 'Islande', poule: 'F', iso: 'is'}])

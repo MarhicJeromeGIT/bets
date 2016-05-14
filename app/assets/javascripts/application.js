@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require dropdown
+//= require modal
 //  require bootstrap.min
 //= require jquery.dataTables.min
 //= require turbolinks
