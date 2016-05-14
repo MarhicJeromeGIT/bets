@@ -18,7 +18,7 @@
           <% if event.password.present? %>
           	<div class="input-group input-group-lg">
 			  <%= label_tag :password,"Mot de passe", class: "input-group-addon" %>
-			  <%= text_field_tag 'event[password]', :password, autofocus: true, class: "form-control" %>
+			  <%= text_field_tag 'event[password]', autofocus: true, class: "form-control" %>
 			</div>
           <% end %>
           <%= submit_tag 'Rejoindre', class: "btn btn-complete" %>

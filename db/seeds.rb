@@ -58,11 +58,11 @@ Match.create!([
 { host_name: 'Suède', guest_name: 'Belgique', date: '2016-06-22 21:00:00 +0200', result: ''}
 ])
 
-player = Player.create(name: "Jerome", email: "jerome@gmail.com", password:"azerty", password_confirmation:"azerty")
+player = Player.create(name: "Jejej", email: "jerome@gmail.com", password:"azerty", password_confirmation:"azerty")
 yuriko = Player.create(name: "Yuriko", email: "yuriko@gmail.com", password:"azerty", password_confirmation:"azerty")
 
-Event.create!( name: 'Euro 2016 LeClan', start_date: '2016-06-10 21:00:00 +0200', owner_player: player )
-Event.create!( name: 'YURIKO EVENT', start_date: '2016-06-10 21:00:00 +0200', owner_player: yuriko )
+Event.create!( name: 'Le Clan', password: '123', owner_player: player )
+Event.create!( name: 'YURIKO OPEN EVENT', owner_player: yuriko )
 
 
 
