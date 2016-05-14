@@ -1,19 +1,20 @@
-<div class="col-md-12">
-<div class="col-md-1" style="padding-top: 16px;">
-<%= match.date.try(:strftime,"%Hh%M")%>
+<div class="col-md-1">
+  <div>
+    <%= match.date.try(:strftime,"%Hh%M")%>
+  </div>
 </div>
-<div class="col-md-5 text-right">
-<%= match.host_name %>
-<% iso = Country.find_by_name(match.host_name).try(:iso) || 'hk' %>
-<%= image_tag "country-4x3/#{iso}.svg", width: 64, alt: 'HK' %>
+<div class="col-md-11">
+
+<div class="col-xs-5">
+	<% iso = Country.find_by_name(match.host_name).try(:iso) || 'hk' %>
+	<div class="col-md-9 text-center"><%= image_tag "country-4x3/#{iso}.svg", width: 64, alt: 'HK' %></div>
+	<div class="col-md-3 text-center"><%= match.host_name %></div>
 </div>
-<div class="col-md-1 text-center" style="padding-top: 16px;">
-vs 
-</div>
-<div class="col-md-5 text-left">
-<% iso = Country.find_by_name(match.guest_name).try(:iso) || 'hk' %>
-<%= image_tag "country-4x3/#{iso}.svg", width: 64, alt: 'HK' %>
-<%= match.guest_name %>
+<div class="col-xs-1 text-center">vs</div>
+<div class="col-xs-5">
+	<% iso = Country.find_by_name(match.guest_name).try(:iso) || 'hk' %>
+	<div class="col-md-9 text-center"><%= image_tag "country-4x3/#{iso}.svg", width: 64, alt: 'HK' %></div>
+	<div class="col-md-3 text-center"><%= match.guest_name %></div>
 </div>
 </div>
 <hr class="divider">

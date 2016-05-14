@@ -16,20 +16,20 @@
 	      <div class="col-md-3">
 	      <% match = b.object.match %>
 	      <% iso = Country.find_by_name(match.host_name).try(:iso) || 'hk' %>
-		  <%= image_tag "country-4x3/#{iso}.svg", width: 64, alt: 'HK' %>
-		  vs
+		  <%= image_tag "country-4x3/#{iso}.svg", width: 64, alt: 'HK', class:"col-xs-5 text-left" %>
+		  <%= tag("p", class:"col-xs-2 text-center", open:"true") %>vs</p>
 		  <% iso = Country.find_by_name(match.guest_name).try(:iso) || 'hk' %>
-		  <%= image_tag "country-4x3/#{iso}.svg", width: 64, alt: 'HK' %>
+		  <%= image_tag "country-4x3/#{iso}.svg", width: 64, alt: 'HK', class:"col-xs-5 text-right" %>
 		  </div>
 		  <div class="col-md-9" style="padding-top: 0px;" >
-	      <div class="buttonset">
-	      <%= b.radio_button(:result, Match::WIN) %>
-	      <%= b.label("result_g", "victoire de #{b.object.match.host_name}",class:"col-md-4",style:"height:50px;","data-toggle":"tooltip", "title":"88% des choix") %>
-	      <%= b.radio_button(:result, Match::TIE) %>
-		  <%= b.label("result_n", "Match nul",class:"col-md-4",style:"height:50px;","data-toggle":"tooltip", "title":"88% des choix") %>
-	      <%= b.radio_button(:result, Match::LOSE) %>
-		  <%= b.label("result_p", "victoire de #{b.object.match.guest_name}",class:"col-md-4",style:"height:50px;","data-toggle":"tooltip", "title":"88% des choix") %>
-		  </div>
+		    <div class="buttonset">
+		      <%= b.radio_button(:result, Match::WIN) %>
+		      <%= b.label("result_g", "victoire de #{b.object.match.host_name}",class:"col-xs-4",style:"min-height:50px;","data-toggle":"tooltip", "title":"88% des choix") %>
+		      <%= b.radio_button(:result, Match::TIE) %>
+			  <%= b.label("result_n", "Match nul",class:"col-xs-4",style:"min-height:50px;","data-toggle":"tooltip", "title":"88% des choix") %>
+		      <%= b.radio_button(:result, Match::LOSE) %>
+			  <%= b.label("result_p", "victoire de #{b.object.match.guest_name}",class:"col-xs-4",style:"min-height:50px;","data-toggle":"tooltip", "title":"88% des choix") %>
+		    </div>
 		  </div>
 	    </div>
 	  <% end %>
