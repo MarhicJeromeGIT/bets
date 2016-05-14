@@ -2,7 +2,6 @@
   <% if @event.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
-
       <ul>
       <% @event.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,16 +10,17 @@
     </div>
   <% end %>
   <%= f.hidden_field :owner_player_id, value: current_player.id %>
+  <div class="input-group input-group-lg">
+    <%= f.label :name, "Nom du groupe", class: "input-group-addon" %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="input-group input-group-lg">
+    <%= f.label :password,"Mot de passe: Laisser vide pour créer un groupe ouvert", class: "input-group-addon" %>
+    <%= f.text_field :password, autofocus: true, class: "form-control" %>
+  </div>
+  
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :start_date %><br>
-    <%= f.datetime_select :start_date %>
-  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Créer le groupe", class: "btn btn-complete"%>
   </div>
 <% end %>

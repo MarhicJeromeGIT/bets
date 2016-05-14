@@ -11,8 +11,9 @@
 vs 
 </div>
 <div class="col-md-5 text-left">
-<%= image_tag 'country-4x3/hk.svg', width: 64, alt: 'HK' %>
-<%= match.guest_name %> 
+<% iso = Country.find_by_name(match.guest_name).try(:iso) || 'hk' %>
+<%= image_tag "country-4x3/#{iso}.svg", width: 64, alt: 'HK' %>
+<%= match.guest_name %>
 </div>
 </div>
 <hr class="divider">

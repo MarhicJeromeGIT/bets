@@ -24,15 +24,26 @@
     background-size: 100%;
 }
 
-h1{
-	padding-top: 0px !important;
-}
-
-h1 {
-    text-align: center;
-    padding-top: 100px;
+.centered {
+	text-align: center;	
 }
 
 a:hover{
   color: darkblue;
 }
+
+.rank-0{
+	color: gold;
+}
+.rank-1{
+	color: silver;
+}
+.rank-2{
+	color: #CD7F32;
+}
+
+td{
+	font-size: 150%;
+}
+
+

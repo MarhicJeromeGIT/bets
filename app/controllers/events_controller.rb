@@ -15,7 +15,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    @players = Player.subscribed_to(@event).order('points DESC')
+    @players = @event.players.order('points DESC')
   end
 
   # A player join this group
@@ -51,12 +51,11 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    debugger
     @event = Event.new(event_params)
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.html { redirect_to @event, notice: "Le groupe '#{@event.name}' a été créé!" }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }

@@ -30,21 +30,21 @@
 
 <h2>Rejoignez d'autres groupes</h2>
 
-<table class="table">
+<table class="table table-bordered">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Statut</th>
-      <th>Actions</th>
+      <th class="centered">Name</th>
+      <th class="centered">Statut</th>
+      <th class="centered">Actions</th>
     </tr>
   </thead>
 
   <tbody>
     <% @not_subscribed_events.each do |event| %>
       <tr>
-        <td><%= link_to "#{event.name} (#{event.player_count})", event %></td>
-        <td><%= event.status %></td>
-        <td><%= link_to "Rejoindre le groupe", join_event_path(event), method: :post, class: "btn btn-default" %></td>
+        <td class="centered"><%= link_to "#{event.name} (#{event.player_count})", event %></td>
+        <td class="centered"><%= event.password.blank? ? tag("i",class:'fa fa-unlock') : tag("i",class:'fa fa-lock') %></td>
+        <td class="centered"><%= link_to "Rejoindre le groupe", join_event_path(event), method: :post, class: "btn btn-default" %></td>
       </tr>
     <% end %>
   </tbody>

@@ -7,17 +7,17 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Country.create!([
 {name: 'France', poule: 'A', iso: 'fr'}, {name: 'Roumanie', poule: 'A', iso: 'ro'}, 
-{name: 'Albanie', poule: 'A',}, {name: 'Suisse', poule: 'A'}, 
-{name: 'Pays de Galles', poule:  'B'}, {name: 'Slovaquie', poule: 'B'}, 
-{name: 'Angleterre', poule: 'B'}, {name: 'Russie', poule: 'B' },
-{name: 'Turquie', poule: 'D'}, {name: 'Croatie', poule: 'D'},
-{name: 'Pologne', poule: 'C'}, {name: 'Irlande du Nord', poule: 'C' },
-{name: 'Allemagne', poule: 'C'}, {name: 'Ukraine', poule: 'C'},
-{name: 'Espagne', poule: 'D'}, {name: 'Rép. Tchèque', poule: 'D'},
+{name: 'Albanie', poule: 'A', iso: 'al'}, {name: 'Suisse', poule: 'A', iso: 'ch'}, 
+{name: 'Pays de Galles', poule:  'B', iso: 'wales'}, {name: 'Slovaquie', poule: 'B', iso: 'sk'}, 
+{name: 'Angleterre', poule: 'B', iso: 'england'}, {name: 'Russie', poule: 'B', iso: 'ru' },
+{name: 'Turquie', poule: 'D', iso: 'tk'}, {name: 'Croatie', poule: 'D', iso: 'hr'},
+{name: 'Pologne', poule: 'C', iso: 'pl'}, {name: 'Irlande du Nord', poule: 'C' },
+{name: 'Allemagne', poule: 'C', iso: 'de'}, {name: 'Ukraine', poule: 'C', iso: 'ua'},
+{name: 'Espagne', poule: 'D', iso: 'es'}, {name: 'Rép. Tchèque', poule: 'D', iso: 'cz'},
 {name: 'République d\'Irlande', poule: 'E'}, {name: 'Suède', poule: 'E'},
-{name: 'Belgique', poule: 'E'}, {name: 'Italie', poule: 'E'},
-{name: 'Autriche', poule: 'F' }, {name: 'Hongrie', poule: 'F'},
-{name: 'Portugal', poule: 'F'}, {name: 'Islande', poule: 'F'}])
+{name: 'Belgique', poule: 'E', iso: 'be'}, {name: 'Italie', poule: 'E', iso: 'it'},
+{name: 'Autriche', poule: 'F',iso: 'at' }, {name: 'Hongrie', poule: 'F', iso: 'hu'},
+{name: 'Portugal', poule: 'F', iso: 'pt'}, {name: 'Islande', poule: 'F', iso: 'is'}])
 
 Match.create!([
 { host_name: 'France', guest_name: 'Roumanie', date: '2016-06-10 21:00:00 +0200', result: '' },
