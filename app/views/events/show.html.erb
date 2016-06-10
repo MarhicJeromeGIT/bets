@@ -16,7 +16,7 @@
 	  	<% rank = points.index(p.points) %>
 	  	<td class="centered"><%= tag("i",class:"fa fa-trophy rank-#{rank} fa-2x") if rank <= 2 %><%= "##{1+rank}" %></td>
 		<td class="centered"><%= p.name %> (<%= link_to( 'voir pronostics', p ) %>)</td>
-		<td class="centered"><%= p.points %></td>	
+		<td class="centered"><%= p.count_points %></td>	
 	  </tr>
 	<% end %>
 	</tbody>

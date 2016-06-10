@@ -10,10 +10,11 @@
       </ul>
     </div>
   <% end %>
-  	<% @player.bets.each do |bet| %>
+  	<% @player.bets.joins(:match).order("date ASC").each do |bet| %>
       <%= f.fields_for :bets, bet do |b| %>
 	    <div class="col-md-12">
 	      <div class="col-md-3">
+	      	  <% match = bet.match %>
 		      <% iso = Country.find_by_name(match.host_name).try(:iso) || 'hk' %>
 			  <div class="col-xs-5 text-left"><%= image_tag "country-4x3/#{iso}.svg", width: 64, alt: 'HK' %></div>
 			  <div class="col-xs-2 text-center">VS</div>
@@ -23,12 +24,12 @@
 		  </div>
 		  <div class="col-md-9" >
 		    <div class="buttonset">
-		      <%#= b.label("result_g", "victoire de #{b.object.match.host_name}",class:"col-xs-4",style:"min-height:50px;","data-toggle":"tooltip", "title":"88% des choix") %>
-		      <%#= b.radio_button(:result, Match::WIN) %>
-		      <%#= b.label("result_n", "Match nul",class:"col-xs-4",style:"min-height:50px;","data-toggle":"tooltip", "title":"88% des choix") %>
-		      <%#= b.radio_button(:result, Match::TIE) %>
-		      <%#= b.label("result_p", "victoire de #{b.object.match.guest_name}",class:"col-xs-4",style:"min-height:50px;","data-toggle":"tooltip", "title":"88% des choix") %>
-		      <%#= b.radio_button(:result, Match::LOSE) %>
+		      <%= b.label("result_g", "victoire de #{b.object.match.host_name}",class:"col-xs-4",style:"min-height:50px;","data-toggle":"tooltip", "title":"88% des choix") %>
+		      <%= b.radio_button(:result, Match::WIN) %>
+		      <%= b.label("result_n", "Match nul",class:"col-xs-4",style:"min-height:50px;","data-toggle":"tooltip", "title":"88% des choix") %>
+		      <%= b.radio_button(:result, Match::TIE) %>
+		      <%= b.label("result_p", "victoire de #{b.object.match.guest_name}",class:"col-xs-4",style:"min-height:50px;","data-toggle":"tooltip", "title":"88% des choix") %>
+		      <%= b.radio_button(:result, Match::LOSE) %>
 		    </div>
 		  </div>
 	    </div>

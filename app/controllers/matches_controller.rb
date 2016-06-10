@@ -53,7 +53,7 @@ class MatchesController < ApplicationController
 
   # DELETE /matches/1
   # DELETE /matches/1.json
-  def destroy
+  def destroy_disabled
     @match.destroy
     respond_to do |format|
       format.html { redirect_to matches_url, notice: 'Match was successfully destroyed.' }

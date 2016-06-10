@@ -90,6 +90,12 @@ class EventsController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
+    if( @event.owner_player != current_player )
+      respond_to do |format|
+       format.html { redirect_to events_url, notice: 'Vous n\'etes pas le propriétaire de cet event.' }
+       format.json { head :no_content }
+      end
+    end
     @event.destroy
     respond_to do |format|
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }

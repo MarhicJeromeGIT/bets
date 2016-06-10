@@ -47,6 +47,13 @@ class PlayersController < ApplicationController
   # PATCH/PUT /players/1
   # PATCH/PUT /players/1.json
   def update
+    if @player != current_player
+      respond_to do |format|
+        format.html { redirect_to @player, notice: 'Vous ne pouvez pas modifier un autre utilisateur.' }
+        return
+      end
+    end
+    
     if Time.now > "2016-06-10 15:38:46 +0200"
       respond_to do |format|
         format.html { redirect_to @player, notice: 'Trop tard pour modifier les pronos.' }
@@ -67,7 +74,7 @@ class PlayersController < ApplicationController
 
   # DELETE /players/1
   # DELETE /players/1.json
-  def destroy
+  def destroy_disabled
     @player.destroy
     respond_to do |format|
       format.html { redirect_to players_url, notice: 'Player was successfully destroyed.' }
