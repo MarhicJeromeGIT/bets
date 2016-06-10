@@ -47,6 +47,13 @@ class PlayersController < ApplicationController
   # PATCH/PUT /players/1
   # PATCH/PUT /players/1.json
   def update
+    if Time.now > "2016-06-10 15:38:46 +0200"
+      respond_to do |format|
+        format.html { redirect_to @player, notice: 'Trop tard pour modifier les pronos.' }
+        return
+      end
+    end
+    
     respond_to do |format|
       if @player.update(player_params)
         format.html { redirect_to @player, notice: 'Player was successfully updated.' }
