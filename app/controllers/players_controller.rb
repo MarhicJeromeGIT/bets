@@ -59,7 +59,7 @@ class PlayersController < ApplicationController
       b = Bet.find_by_id(v['id'])
       params_bets[:bets_attributes][k] = v if b.match.present? && b.match.date > Time.now 
     end
-    debugger
+    
     
     respond_to do |format|
       if @player.update(player_params)
