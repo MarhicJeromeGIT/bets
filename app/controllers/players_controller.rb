@@ -54,12 +54,12 @@ class PlayersController < ApplicationController
       end
     end
     
-    if Time.now > "2016-06-10 15:38:46 +0200"
-      respond_to do |format|
-        format.html { redirect_to @player, notice: 'Trop tard pour modifier les pronos.' }
-        return
-      end
+    params_bets = { :bets_attributes => {} }
+    player_params[:bets_attributes].each do |k,v|
+      b = Bet.find_by_id(v['id'])
+      params_bets[:bets_attributes][k] = v if b.match.present? && b.match.date > Time.now 
     end
+    debugger
     
     respond_to do |format|
       if @player.update(player_params)
